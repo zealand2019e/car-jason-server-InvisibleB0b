@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CarFactory;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace CarJsonServer
 {
@@ -97,12 +99,13 @@ namespace CarJsonServer
                 }
 
 
-                Car c = new Car()
-                {
-                    Color = message.Split(" ")[1],
-                    Model = message.Split(" ")[0],
-                    RegNr = message.Split(" ")[2]
-                };
+                //Car c = new Car()
+                //{
+                //    Color = message.Split(" ")[1],
+                //    Model = message.Split(" ")[0],
+                //    RegNr = message.Split(" ")[2]
+                //};
+                Car c = JsonSerializer.Deserialize<Car>(message);
 
                 Console.WriteLine(c);
             }

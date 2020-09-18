@@ -2,6 +2,8 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using CarFactory;
 
 namespace CarJsonClient
@@ -46,7 +48,7 @@ namespace CarJsonClient
                 {
                     Car c = new Car() { Color = "Red", Model = "Tesla", RegNr = "1122456Q" };
                     Console.WriteLine(message);
-                    string messag = c.ToString();
+                    string messag = JsonSerializer.Serialize(c);
                     sw.WriteLine(messag);
                 }
 
